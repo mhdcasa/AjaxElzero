@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax video03</title>
+</head>
+<body>
+    <button onclick='getRepos()'>get repo</button>
+
+    <div id="show"></div>
+<script>
+    
+    //Make function to do request
+
+    function getRepos(){
+      //  (XMLHttpRequest hada object  katsifat des données o katjib des données bla ma nchof ana walo p ana had object 7atito f 1 variable smito myRequest)
+        var myRequest =  new XMLHttpRequest();
+
+      //On Ready State Change=> Function Called when readyState change
+        myRequest.onreadystatechange = function() {
+
+            //console.log(this.readyState);
+            //console.log(this.status);
+
+            /*
+
+            Ready State => The Status of the Request (status dyal requette c'est a dire la requtte dyali fin wslate)
+                [0] Request not intialized la requette mazal ma bdatch
+                [1] Server Connection Esatblished c'est a dire tconnectate m3a serveur
+                [2] Request Received la requette waslat
+                [3] Processing Request 
+                [4] Request is Finished and response is Ready
+            Status=>Response Status Code
+            [200] ok            
+            */
+                
+            //If Request is Finished and Response is Ready and Status Code is 200 (OK) Get Response Code 
+            if(this.readyState === 4 && this.status ===  200){
+                //console.log(this.responseText);
+                //console.log(JSON.parse(this.responseText));
+
+                //Convert ResponseText To JS Object
+
+                var myJsObject = JSON.parse(this.responseText);
+                console.log(myJsObject);
+
+                myText = "";
+
+                for (var i = 0; i < myJsObject.length; i++){
+                    myText = myText + myJsObject[i].username+"<br>";
+                    console.log(myText);
+                }
+                document.getElementById("show").innerHTML = myText;
+
+            }
+        }
+
+           //XMLHttpRequest.open Accept 5 Parametre(Method[GET,POST,DELETE....], URL(I9dar ikon fichier 3ndi f mon pc b7al readme.txt),Async(khasni nfhamha ktar o n3raf 3lach ndirha ), User, Password)
+    myRequest.open(
+        "GET",
+        //"readme.txt",
+        //"https://api.github.com/users/ElzeroWebSchool/repos",
+        "object.json",
+        true
+    );
+    myRequest.send();
+};
+</script>
+
+</body>
+</html>
