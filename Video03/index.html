@@ -58,14 +58,40 @@
         }
 
            //XMLHttpRequest.open Accept 5 Parametre(Method[GET,POST,DELETE....], URL(I9dar ikon fichier 3ndi f mon pc b7al readme.txt),Async(khasni nfhamha ktar o n3raf 3lach ndirha ), User, Password)
-    myRequest.open(
-        "GET",
+    //myRequest.open(
+        //"GET",
         //"readme.txt",
         //"https://api.github.com/users/ElzeroWebSchool/repos",
-        "object.json",
-        true
-    );
-    myRequest.send();
+       //"object.json",
+        //true
+    //);
+    //myRequest.send();
+
+
+
+//======================================================================GET AND POST===============================================================================//
+        
+//GET
+
+
+        /**myRequest.open(
+          "GET",
+            "auth.php?name=mehdi&login_time=Today",
+            true
+        );
+        myRequest.send();*/
+
+
+
+
+//POST f POST DOK PARAMETRE KAYKONP F SEND()
+myRequest.open("POST","auth.php",true);
+myRequest.setRequestHeader(
+    "Content-Type",
+    "application/x-www-form-urlencoded"
+);
+myRequest.send("name=mehdi&login_time=Today");
+
 };
 </script>
 
