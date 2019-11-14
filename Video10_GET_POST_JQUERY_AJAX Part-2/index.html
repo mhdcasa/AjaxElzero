@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax video03</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button class="get_data">get repo</button>
+
+    <div id="show"></div>
+<script>
+
+$(document).ready(function(){
+
+    $(".get_data").click(function(){
+
+        $.ajax({
+            
+            // type:"POST" // Alias for method kan kaysta3mal f jquery version 1.9.0 o li 9bal mano
+            // cache:false, Cache the request, Default true
+            // async:false , Asynchronous Or No
+            // timeout: 3000 , ch7al man second bach t éxecuta liya 1 fonction 
+            // dataType:'html'or 'xml'or'JSon'or ... sinon ma kandirhach o kankhali jquery iyakhodha raso mn data li jayb
+            // username:'mehdi', // For Authentication
+            // password:'soulsoul', // For Authentication
+            // contentType:'multipart/form-data', // Content Type For the request , Deafault is application/x-www-urlencoded
+
+            method:"POST",
+            url:"auth.php",
+            data:{name:"mehdi",login_time:"yesterday"},
+            success:function(data,status,xhr){
+                console.log(data);
+                console.log(status);
+                console.log(xhr);
+                $("#show").html(data);
+            },
+            error:function(xhr,status,error){
+                console.log(xhr);
+                console.log(status);
+                console.log(error);                
+            },
+            complete:function(xhr,status){  //Complete c'est une fontcion li ka t éxecuta liya apres succes ola error
+                console.log(xhr);
+                console.log(status);
+                
+            }
+        })
+
+       
+    })
+})
+
+    
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
