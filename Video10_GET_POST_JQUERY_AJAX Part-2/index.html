@@ -28,6 +28,10 @@ $(document).ready(function(){
             // password:'soulsoul', // For Authentication
             // contentType:'multipart/form-data', // Content Type For the request , Deafault is application/x-www-urlencoded
 
+
+            beforeSend:function(xhr){
+                console.log(xhr);
+            },
             method:"POST",
             url:"auth.php",
             data:{name:"mehdi",login_time:"yesterday"},
