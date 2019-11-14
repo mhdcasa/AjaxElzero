@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax video03</title>
+</head>
+<body>
+    <button onclick='getRepos()'>get repo</button>
+
+    <div id="show"></div>
+<script>
+
+    function getRepos(){
+        $("#show").load("readme.html .data",function(response, statuscode,xhr){
+            console.log(response); //data li ghada tarja3 liya
+            console.log(statuscode); // le code de status wach 200(ok) ola 404 ola autre 
+            console.log(xhr); //la requette li dazat
+
+           if (statuscode === "success") {
+
+                console.log('data loadedf')
+
+            }
+        })
+    }
+    
+
+
+</script>
+
+
+
+
+<script src="jquery.js"></script>
+</body>
+</html>
