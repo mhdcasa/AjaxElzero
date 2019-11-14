@@ -15,32 +15,27 @@
 
 $(document).ready(function(){
 
-// le cas de get
-// $('.get_data').click(function(){
-// $.get("auth.php?name=mehdi&login_time=today",function(response,statuscode,xhr){
-//     console.log(response);
-//     console.log(statuscode);
-//     console.log(xhr);
-//     })
-// })
+    $(".get_data").click(function(){
 
+        $.ajax({
+            method:"POST",
+            url:"auth.php",
+            data:{name:"mehdi",login_time:"yesterday"},
+            success:function(data,status,xhr){
+                console.log(data);
+                console.log(status);
+                console.log(xhr);
+                $("#show").html(data);
+            },
+            error:function(xhr,status,error){
+                console.log(xhr);
+                console.log(status);
+                console.log(error);                
+            }
+        })
 
-
-// le cas de POST
-$('.get_data').click(function(){
-$.post("auth.php",{name:"mehdi", login_time:"today"},function(
-    response,
-    statuscode,
-    xhr
-    )
-    {
-    console.log(response);
-    console.log(statuscode);
-    console.log(xhr);
+       
     })
-})
-
-
 })
 
     
